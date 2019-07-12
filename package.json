@@ -1,0 +1,82 @@
+{
+  "name": "@enface/sdk",
+  "version": "1.0.0",
+  "description": "Enface biometric services",
+  "author": "Enface LTD",
+  "main": "./dist/enface.node.js",
+  "browser": {
+    "./dist/enface.node.js": "./dist/enface.web.js"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "prepublish": "npm run build",
+    "test": "jest",
+    "test:watch": "jest --watch --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/safead/enface-sdk-js.git"
+  },
+  "keywords": [
+    "enface",
+    "biometric",
+    "face",
+    "detection",
+    "liveness",
+    "sdk"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/safead/enface-sdk-js/issues"
+  },
+  "homepage": "https://enface.io",
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.6.2",
+    "apollo-client": "^2.6.3",
+    "apollo-link": "^1.2.12",
+    "apollo-link-http-common": "^0.2.14",
+    "apollo-link-ws": "^1.0.18",
+    "cross-fetch": "^3.0.4",
+    "graphql": "^14.4.1",
+    "graphql-tag": "^2.10.1",
+    "isomorphic-ws": "^4.0.1",
+    "request": "^2.88.0",
+    "subscriptions-transport-ws": "^0.9.16",
+    "ws": "^7.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/runtime": "^7.4.5",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jest": "^22.7.1",
+    "jest": "^24.8.0",
+    "mock-apollo-client": "^0.1.0",
+    "parallel-webpack": "^2.4.0",
+    "terser-webpack-plugin": "^1.3.0",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.1",
+    "tls": "0.0.1",
+    "utf-8-validate": "^5.0.2"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "__mocks__",
+      "__utils__",
+      "__tests__/apiMocked.js"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enface SDK Demo</title>
+</head>
+<body>
+<script src="./enface.web.js"></script>
+<script>
+  const enfaceApi = createEnfaceApi({	apiKey: '9e9d58b2-d0c9-4465-a4a0-c96db3ebc3b4' });
+//5489e05d-b62c-4384-87ec-808a749e3370 localhost
+//9e9d58b2-d0c9-4465-a4a0-c96db3ebc3b4 admin@enface.io
+
+  const inputFile = document.createElement('INPUT');
+  inputFile.type = 'file';
+  document.body.appendChild(inputFile);
+
+  inputFile.onchange = event => {
+    console.log('event.target', event.target.files[0]);
+    enfaceApi.recognize({ images: [event.target.files[0]] }).then(result => {
+      console.log(result);
+    });
+  };
+
+</script>
+</body>
+</html>
