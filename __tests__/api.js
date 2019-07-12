@@ -6,7 +6,7 @@ import { createEnfaceApi } from '../src';
 /* >>>>>>>>> ADD YOUR REAL API KEY >>>>>>>>> */
 const recognitionApiKey = 'YOUR_RECOGNITION_API_KEY';
 const livenessApiKey = 'YOUR_LIVENESS_API_KEY';
-const recognizeLivenessApiKey = 'YOUR_RECOGNIZE_LIVENESS_API_KEY';
+const recognizeLivenessApiKey = 'YOUR_RECOGNITION_LIVENESS_API_KEY';
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 const version = 1;
@@ -61,7 +61,7 @@ describe('EnfaceApi real network tests', () => {
     });
   }
 
-  if (recognizeLivenessApiKey !== 'YOUR_RECOGNIZE_LIVENESS_API_KEY') {
+  if (recognizeLivenessApiKey !== 'YOUR_RECOGNITION_LIVENESS_API_KEY') {
     test('Recognize & liveness request, should succeed', async () => {
       const api = createEnfaceApi({
         version,

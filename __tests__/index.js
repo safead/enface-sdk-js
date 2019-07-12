@@ -32,7 +32,7 @@ describe('createEnfaceApi test', () => {
     expect(call).toThrow(new Error('Bad API key format'));
   });
 
-  test('should successfully an EnfaceApi instance', () => {
+  test('should successfully create an EnfaceApi instance', () => {
     const enfaceApi = createEnfaceApi({
       apiKey: constants.API_KEY,
       version: apiVersions[apiVersions.length - 1],

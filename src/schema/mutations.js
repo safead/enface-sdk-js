@@ -1,4 +1,9 @@
 import gql from 'graphql-tag';
+import {
+  LIVENESS_FRAGMENT,
+  FACE_FRAGMENT,
+  LIVE_FACE_FRAGMENT,
+} from './fragments';
 
 export const RECOGNIZE = gql`
   mutation (
@@ -6,15 +11,15 @@ export const RECOGNIZE = gql`
     $apiKey: String!
     $version: String
   ) {
-    goFace (
+    recognize (
       apiKey: $apiKey
       files: $files
       version: $version
     ) {
-      sessionId
-      createdAt
+      ...face
     }
   }
+  ${FACE_FRAGMENT}
 `;
 
 export const LIVENESS = gql`
@@ -23,15 +28,15 @@ export const LIVENESS = gql`
     $apiKey: String!
     $version: String
   ) {
-    goLiveness (
+    liveness (
       apiKey: $apiKey
       files: $files
       version: $version
     ) {
-      sessionId
-      createdAt
+      ...liveness
     }
   }
+  ${LIVENESS_FRAGMENT}
 `;
 
 export const RECOGNIZE_LIVENESS = gql`
@@ -41,14 +46,14 @@ export const RECOGNIZE_LIVENESS = gql`
     $versionLive: String
     $versionFace: String
   ) {
-    goLiveFace (
+    liveFace (
       apiKey: $apiKey
       files: $files
       versionLive: $versionLive
       versionFace: $versionFace
     ) {
-      sessionId
-      createdAt
+      ...liveFace
     }
   }
+  ${LIVE_FACE_FRAGMENT}
 `;
