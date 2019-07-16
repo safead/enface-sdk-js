@@ -151,7 +151,7 @@ JavaScript examples:
 
 ## Raw REST API post request with header:
 
-`
+```html
 POST https://enface-api-server.herokuapp.com/rest/recognizeLiveness HTTP/1.1
 Host: enface-api-server.herokuapp.com
 Content-Type: multipart/form-data; boundary=----------------------------794180515515914733140144
@@ -178,4 +178,4 @@ filename="2.jpg"
 Content-Type: image/jpeg
 
 binary image3
-`
+```
