@@ -57,7 +57,6 @@ const result = await enfaceApi.liveness({
 
 ## Both face recognition & liveness detection in one request:
 
-
 ```js
 // Request:
 const result = await enfaceApi.recognizeLiveness({
@@ -104,3 +103,79 @@ Get the minified "enface.web.js" script from "dist/" folder and link to your web
 
 </script>
 ```
+
+## Enface REST API
+
+Enface supports 2 types of API requests - GraphQL & REST. Full GraphQL documentstion can be found here: http://docs.enface.io. REST API accepts data in `multipart/form-data` format with following fields:
+
+* apiKey
+* array of images in binary form
+
+JavaScript examples:
+
+## Face recognition:
+
+```js
+  const formData  = new FormData();
+  formData.append('apiKey', 'YOUR_RECOGNITION_API_KEY');
+  formData.append('image', image, `image1.jpg`);
+  const result = await fetch('https://enface-api-server.herokuapp.com/rest/recognize', {
+    method: 'post',
+    body: formData,
+  });
+```
+
+## Liveness detection:
+
+```js
+  const formData  = new FormData();
+  formData.append('apiKey', 'YOUR_LIVENESS_API_KEY');
+  images.forEach((image, index) => formData.append('image', image, `${index}.jpg`));
+  const result = await fetch('https://enface-api-server.herokuapp.com/rest/liveness', {
+    method: 'post',
+    body: formData,
+  });
+```
+
+## Both face recognition & liveness detection in one request:
+
+```js
+  const formData  = new FormData();
+  formData.append('apiKey', 'YOUR_RECOGNITION_LIVENESS_API_KEY');
+  images.forEach((image, index) => formData.append('image', image, `${index}.jpg`));
+  const result = await fetch('https://enface-api-server.herokuapp.com/rest/recognizeLiveness', {
+    method: 'post',
+    body: formData,
+  });
+```
+
+## Raw REST API post request with header:
+
+`
+POST https://enface-api-server.herokuapp.com/rest/recognizeLiveness HTTP/1.1
+Host: enface-api-server.herokuapp.com
+Content-Type: multipart/form-data; boundary=----------------------------794180515515914733140144
+
+----------------------------794180515515914733140144
+Content-Disposition: form-data; name="apiKey"
+9e9d58b2-d0c9-4465-a4a0-c96db3ebc3b4
+
+----------------------------794180515515914733140144
+Content-Disposition: form-data; name="image";
+filename="0.jpg"
+Content-Type: image/jpeg
+
+binary image1
+----------------------------794180515515914733140144
+Content-Disposition: form-data; name="image";
+filename="1.jpg"
+Content-Type: image/jpeg
+
+binary image2
+----------------------------794180515515914733140144
+Content-Disposition: form-data; name="image";
+filename="2.jpg"
+Content-Type: image/jpeg
+
+binary image3
+`
