@@ -2,11 +2,10 @@ import { ApolloClient } from 'apollo-client';
 import { ApolloLink } from 'apollo-link';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createUploadLink } from './upload-link';
-import { apiEndpoints } from './constants';
 
-export const apolloClient = (version, apiKey) => {
+export const apolloClient = (url, apiKey) => {
   const uploadLink = createUploadLink({
-    uri: apiEndpoints[`v${version}`].https,
+    uri: url,
   });
   const client = new ApolloClient({
     link: ApolloLink.from([uploadLink]),

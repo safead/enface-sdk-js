@@ -10,7 +10,9 @@ export class EnfaceApi {
     this.client = client;
   }
 
-  recognize({ images }) {
+  recognize({
+    images, pc, npc, bcId,
+  }) {
     return new Promise(async (resolve, reject) => {
       try {
         images = await utils.checkImages(images, 1, constants.MIN_IMAGE_SIZE);
@@ -24,6 +26,9 @@ export class EnfaceApi {
           variables: {
             apiKey: client.apiKey,
             files: utils.nameImagesByIndex(images),
+            pc,
+            npc,
+            bcId,
           },
         });
         resolve(utils.filterObject(recognize, '__typename'));

@@ -10,11 +10,17 @@ export const RECOGNIZE = gql`
     $files: [Upload!]!
     $apiKey: String!
     $version: String
+    $pc: String
+    $npc: String
+    $bcId: String
   ) {
     recognize (
       apiKey: $apiKey
       files: $files
       version: $version
+      pc: $pc
+      npc: $npc
+      bcId: $bcId
     ) {
       ...face
     }

@@ -1,18 +1,5 @@
 import { isNodeEnvironment } from './globals';
 
-const readFileAsArrayBuffer = async file => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = (event => {
-      resolve(event.target.result);
-    });
-    reader.onerror = (error => {
-      reject(error);
-    });
-    reader.readAsArrayBuffer(file);
-  });
-};
-
 export const nameImagesByIndex = images => {
   return images.map((item, index) => {
     item.name = `${index}.jpg`;
