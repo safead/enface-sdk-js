@@ -11,7 +11,7 @@ export class EnfaceApi {
   }
 
   recognize({
-    images, pc, npc, bcId,
+    images, pc, npc, bcId, pa, security,
   }) {
     return new Promise(async (resolve, reject) => {
       try {
@@ -29,6 +29,8 @@ export class EnfaceApi {
             pc,
             npc,
             bcId,
+            pa,
+            security,
           },
         });
         resolve(utils.filterObject(recognize, '__typename'));

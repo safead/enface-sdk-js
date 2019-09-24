@@ -65,6 +65,7 @@
     jsx-a11y/anchor-is-valid: 0
     linebreak-style: 0
     no-nested-ternary: 0
+    no-async-promise-executor: 0
 
     # ------------
     # Import Rules

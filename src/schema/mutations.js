@@ -13,6 +13,8 @@ export const RECOGNIZE = gql`
     $pc: String
     $npc: String
     $bcId: String
+    $pa: Float
+    $security: String
   ) {
     recognize (
       apiKey: $apiKey
@@ -20,7 +22,9 @@ export const RECOGNIZE = gql`
       version: $version
       pc: $pc
       npc: $npc
+      pa: $pa
       bcId: $bcId
+      security: $security
     ) {
       ...face
     }

@@ -26,6 +26,7 @@ export const FACE_FRAGMENT = gql`
     sessionId
     time
     createdAt
+    actionCode
     person {
       id
       imageURL
