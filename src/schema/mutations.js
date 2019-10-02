@@ -67,3 +67,23 @@ export const RECOGNIZE_LIVENESS = gql`
   }
   ${LIVE_FACE_FRAGMENT}
 `;
+
+export const AUTHENTICATION = gql`
+  mutation (
+    $files: [Upload!]!
+    $project: String!
+    $token: String!
+    $fields: String!
+  ) {
+    authentication (
+      files: $files
+      project: $project
+      token: $token
+      fields: $fields
+    ) {
+      result
+      action
+      message
+    }
+  }
+`;

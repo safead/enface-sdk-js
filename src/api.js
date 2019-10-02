@@ -85,4 +85,31 @@ export class EnfaceApi {
       }
     });
   }
+
+  authenticate({
+    images, project, token, fields,
+  }) {
+    return new Promise(async (resolve, reject) => {
+      // try {
+      //   images = await utils.checkImages(images, 1, constants.MIN_IMAGE_SIZE);
+      // } catch (error) {
+      //   return reject(error);
+      // }
+      const { client } = this;
+      try {
+        const authResult = await client.mutate({
+          mutation: m.AUTHENTICATION,
+          variables: {
+            files: utils.nameImagesByIndex(images),
+            project,
+            token,
+            fields,
+          },
+        });
+        resolve(utils.filterObject(authResult, '__typename'));
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
 }
