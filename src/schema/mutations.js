@@ -87,3 +87,27 @@ export const AUTHENTICATION = gql`
     }
   }
 `;
+
+export const AUTH_BLOCKCHAIN = gql`
+  mutation (
+    $files: [Upload!]!
+    $alias: String!
+    $security: String!
+    $project: String!
+    $token: String!
+    $fields: String!
+  ) {
+    authBlockchain (
+      files: $files
+      alias: $alias
+      security: $security
+      project: $project
+      token: $token
+      fields: $fields
+    ) {
+      result
+      action
+      message
+    }
+  }
+`;
