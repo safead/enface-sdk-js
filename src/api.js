@@ -87,8 +87,8 @@ export class EnfaceApi {
   }
 
   authenticate({
-                 images, project, token, fields,
-               }) {
+    images, project, token, fields,
+  }) {
     return new Promise(async (resolve, reject) => {
       // try {
       //   images = await utils.checkImages(images, 1, constants.MIN_IMAGE_SIZE);
@@ -117,11 +117,11 @@ export class EnfaceApi {
     images, alias, project, token, fields, security,
   }) {
     return new Promise(async (resolve, reject) => {
-      // try {
-      //   images = await utils.checkImages(images, 1, constants.MIN_IMAGE_SIZE);
-      // } catch (error) {
-      //   return reject(error);
-      // }
+      try {
+        images = await utils.checkImages(images, 1, constants.MIN_IMAGE_SIZE);
+      } catch (error) {
+        return reject(error);
+      }
       const { client } = this;
       try {
         const authResult = await client.mutate({
@@ -133,6 +133,35 @@ export class EnfaceApi {
             project,
             token,
             fields,
+          },
+        });
+        resolve(utils.filterObject(authResult, '__typename'));
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  payment({
+    images, alias, projectId, productId, txId, security,
+  }) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        images = await utils.checkImages(images, 1, constants.MIN_IMAGE_SIZE);
+      } catch (error) {
+        return reject(error);
+      }
+      const { client } = this;
+      try {
+        const authResult = await client.mutate({
+          mutation: m.PAYMENT,
+          variables: {
+            files: utils.nameImagesByIndex(images),
+            alias,
+            security,
+            projectId,
+            productId,
+            txId,
           },
         });
         resolve(utils.filterObject(authResult, '__typename'));

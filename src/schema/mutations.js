@@ -111,3 +111,27 @@ export const AUTH_BLOCKCHAIN = gql`
     }
   }
 `;
+
+export const PAYMENT = gql`
+  mutation (
+    $files: [Upload!]!
+    $alias: String!
+    $security: String!
+    $projectId: String!
+    $productId: String!
+    $txId: String!
+  ) {
+    payment (
+      files: $files
+      alias: $alias
+      security: $security
+      projectId: $projectId
+      productId: $productId
+      txId: $txId
+    ) {
+      result
+      action
+      message
+    }
+  }
+`;
