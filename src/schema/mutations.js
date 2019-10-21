@@ -90,7 +90,6 @@ export const AUTHENTICATION = gql`
 
 export const AUTH_BLOCKCHAIN = gql`
   mutation (
-    $files: [Upload!]!
     $alias: String!
     $security: String!
     $project: String!
@@ -98,7 +97,6 @@ export const AUTH_BLOCKCHAIN = gql`
     $fields: String!
   ) {
     authBlockchain (
-      files: $files
       alias: $alias
       security: $security
       project: $project
@@ -114,7 +112,6 @@ export const AUTH_BLOCKCHAIN = gql`
 
 export const PAYMENT = gql`
   mutation (
-    $files: [Upload!]!
     $alias: String!
     $security: String!
     $projectId: String!
@@ -122,12 +119,27 @@ export const PAYMENT = gql`
     $txId: String!
   ) {
     payment (
-      files: $files
       alias: $alias
       security: $security
       projectId: $projectId
       productId: $productId
       txId: $txId
+    ) {
+      result
+      action
+      message
+    }
+  }
+`;
+
+export const RECOGNIZE_WALLET_USER = gql`
+  mutation (
+    $files: [Upload!]!
+    $security: String!
+  ) {
+    authentication (
+      files: $files
+      security: $security
     ) {
       result
       action
