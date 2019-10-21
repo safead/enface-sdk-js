@@ -137,7 +137,7 @@ export const RECOGNIZE_WALLET_USER = gql`
     $files: [Upload!]!
     $security: String!
   ) {
-    authentication (
+    recognizeWalletUser (
       files: $files
       security: $security
     ) {
