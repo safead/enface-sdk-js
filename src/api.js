@@ -160,7 +160,7 @@ export class EnfaceApi {
   }
 
   recognizeWalletUser({
-    images, security,
+    images, alias, security,
   }) {
     return new Promise(async (resolve, reject) => {
       try {
@@ -175,6 +175,7 @@ export class EnfaceApi {
           variables: {
             files: utils.nameImagesByIndex(images),
             security,
+            alias,
           },
         });
         resolve(utils.filterObject(authResult, '__typename'));

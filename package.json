@@ -1,6 +1,6 @@
 {
   "name": "@enface/sdk",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Enface biometric services",
   "author": "Enface LTD",
   "main": "./dist/enface.node.js",
