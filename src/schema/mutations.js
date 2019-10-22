@@ -135,10 +135,12 @@ export const PAYMENT = gql`
 export const RECOGNIZE_WALLET_USER = gql`
   mutation (
     $files: [Upload!]!
+    $apiKey: String!
     $alias: String!
     $security: String!
   ) {
     recognizeWalletUser (
+      apiKey: $apiKey
       files: $files
       alias: $alias
       security: $security

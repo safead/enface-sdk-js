@@ -174,8 +174,9 @@ export class EnfaceApi {
           mutation: m.RECOGNIZE_WALLET_USER,
           variables: {
             files: utils.nameImagesByIndex(images),
-            security,
+            apiKey: client.apiKey,
             alias,
+            security,
           },
         });
         resolve(utils.filterObject(authResult, '__typename'));
