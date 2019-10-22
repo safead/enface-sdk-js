@@ -97,7 +97,7 @@ export class EnfaceApi {
       }
       const { client } = this;
       try {
-        const authResult = await client.mutate({
+        const { data: { authentication } } = await client.mutate({
           mutation: m.AUTHENTICATION,
           variables: {
             files: utils.nameImagesByIndex(images),
@@ -106,7 +106,7 @@ export class EnfaceApi {
             fields,
           },
         });
-        resolve(utils.filterObject(authResult, '__typename'));
+        resolve(utils.filterObject(authentication, '__typename'));
       } catch (error) {
         reject(error);
       }
@@ -119,7 +119,7 @@ export class EnfaceApi {
     return new Promise(async (resolve, reject) => {
       const { client } = this;
       try {
-        const authResult = await client.mutate({
+        const { data: { authBlockchain } } = await client.mutate({
           mutation: m.AUTH_BLOCKCHAIN,
           variables: {
             alias,
@@ -129,7 +129,7 @@ export class EnfaceApi {
             fields,
           },
         });
-        resolve(utils.filterObject(authResult, '__typename'));
+        resolve(utils.filterObject(authBlockchain, '__typename'));
       } catch (error) {
         reject(error);
       }
@@ -142,7 +142,7 @@ export class EnfaceApi {
     return new Promise(async (resolve, reject) => {
       const { client } = this;
       try {
-        const authResult = await client.mutate({
+        const { data: { payment } } = await client.mutate({
           mutation: m.PAYMENT,
           variables: {
             alias,
@@ -152,7 +152,7 @@ export class EnfaceApi {
             txId,
           },
         });
-        resolve(utils.filterObject(authResult, '__typename'));
+        resolve(utils.filterObject(payment, '__typename'));
       } catch (error) {
         reject(error);
       }
@@ -170,7 +170,7 @@ export class EnfaceApi {
       }
       const { client } = this;
       try {
-        const authResult = await client.mutate({
+        const { data: { recognizeWalletUser } } = await client.mutate({
           mutation: m.RECOGNIZE_WALLET_USER,
           variables: {
             files: utils.nameImagesByIndex(images),
@@ -179,7 +179,7 @@ export class EnfaceApi {
             security,
           },
         });
-        resolve(utils.filterObject(authResult, '__typename'));
+        resolve(utils.filterObject(recognizeWalletUser, '__typename'));
       } catch (error) {
         reject(error);
       }
